@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7257a8">
+  <meta name="description" content="Il tuo diario personale del percorso post-sleeve.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>My Sleeve – Il mio percorso</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">♥</span><div><strong>My Sleeve</strong><small>Il mio percorso, un giorno alla volta</small></div></div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Impostazioni">⚙</button>
+  </header>
+
+  <main>
+    <section id="welcome" class="panel welcome hidden">
+      <div class="eyebrow">BENVENUTA/O IN MY SLEEVE</div>
+      <h1>Il tuo percorso,<br><em>i tuoi tempi.</em></h1>
+      <p>Imposta il tuo profilo per iniziare a tenere traccia dei tuoi progressi. I dati di questa versione restano salvati su questo dispositivo.</p>
+      <form id="profileForm" class="form-grid">
+        <label>Come vuoi essere chiamata/o?<input name="nickname" maxlength="30" placeholder="Es. Ale" required></label>
+        <label>Data dell'intervento<input name="surgeryDate" type="date" required></label>
+        <label class="full">Obiettivo personale (facoltativo)<input name="goal" maxlength="80" placeholder="Es. ricordarmi di bere con regolarità"></label>
+        <button class="primary full" type="submit">Crea il mio spazio</button>
+      </form>
+    </section>
+
+    <div id="appContent" class="hidden">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">IL TUO PERCORSO</div>
+          <h1>Ciao, <span id="helloName">ciao</span> 🌷</h1>
+          <p id="journeyText">Ogni piccolo passo conta.</p>
+        </div>
+        <div class="day-bubble"><strong id="dayCount">0</strong><span>giorni<br>dall'intervento</span></div>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card"><span class="stat-icon">📅</span><div><small>Tempo trascorso</small><strong id="elapsed">—</strong></div></article>
+        <article class="stat-card"><span class="stat-icon">⚖️</span><div><small>Ultimo peso</small><strong id="latestWeight">—</strong></div></article>
+        <article class="stat-card"><span class="stat-icon">💧</span><div><small>Acqua di oggi</small><strong id="waterTotal">0 ml</strong></div></article>
+      </section>
+
+      <section class="panel">
+        <div class="section-head"><div><div class="eyebrow">OGGI</div><h2>Il mio diario</h2></div><span class="date-pill" id="todayLabel"></span></div>
+        <div class="quick-grid">
+          <button class="quick-action" data-open="water"><span>💧</span><b>Registra acqua</b><small>Aggiungi un bicchiere</small></button>
+          <button class="quick-action" data-open="weight"><span>⚖️</span><b>Registra peso</b><small>Segna il tuo peso</small></button>
+          <button class="quick-action" data-open="meal"><span>🍽️</span><b>Registra pasto</b><small>Annota cosa hai mangiato</small></button>
+          <button class="quick-action" data-open="note"><span>📝</span><b>Una nota</b><small>Come ti senti oggi?</small></button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head"><div><div class="eyebrow">IL TUO STORICO</div><h2>Ultime registrazioni</h2></div></div>
+        <div id="entries" class="entries"><p class="muted">Non hai ancora registrazioni. Inizia da una delle attività qui sopra.</p></div>
+      </section>
+
+      <section class="panel info-panel">
+        <span class="info-icon">💜</span><div><h3>Un promemoria importante</h3><p>Le fasi alimentari, le quantità di liquidi e le indicazioni cliniche devono seguire il protocollo del tuo centro bariatrico. My Sleeve è un diario personale, non sostituisce il parere dei professionisti sanitari.</p></div>
+      </section>
+    </div>
+  </main>
+
+  <nav class="bottom-nav hidden" id="bottomNav">
+    <button class="nav-item active" data-tab="home"><span>⌂</span>Home</button>
+    <button class="nav-item" data-tab="history"><span>▤</span>Diario</button>
+    <button class="nav-item" data-tab="profile"><span>♡</span>Profilo</button>
+  </nav>
+
+  <dialog id="entryDialog">
+    <form method="dialog" id="entryForm">
+      <div class="dialog-head"><h2 id="dialogTitle">Nuova registrazione</h2><button class="icon-btn" value="cancel" aria-label="Chiudi">✕</button></div>
+      <div id="dialogFields"></div>
+      <button class="primary" id="saveEntry" type="submit" value="save">Salva nel mio diario</button>
+    </form>
+  </dialog>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" id="settingsForm">
+      <div class="dialog-head"><h2>Il mio profilo</h2><button class="icon-btn" value="cancel" aria-label="Chiudi">✕</button></div>
+      <label>Nome<input id="editName" maxlength="30" required></label>
+      <label>Data intervento<input id="editDate" type="date" required></label>
+      <label>Obiettivo personale<input id="editGoal" maxlength="80"></label>
+      <div class="button-row"><button class="primary" id="saveProfile" value="save">Salva</button><button class="danger" id="exportData" type="button">Esporta i miei dati</button></div>
+      <p class="tiny">Puoi esportare una copia dei tuoi dati. Se cancelli i dati del browser o cambi telefono, potresti perderli: conserva il file esportato.</p>
+      <button class="text-danger" id="resetData" type="button">Cancella tutti i miei dati da questo dispositivo</button>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

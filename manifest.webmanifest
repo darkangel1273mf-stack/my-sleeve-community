@@ -1,0 +1,17 @@
+{
+  "name": "My Sleeve – Il mio percorso",
+  "short_name": "My Sleeve",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8f6fa",
+  "theme_color": "#7257a8",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

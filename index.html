@@ -88,6 +88,25 @@
       <label>Obiettivo personale<input id="editGoal" maxlength="80"></label>
       <div class="button-row"><button class="primary" id="saveProfile" value="save">Salva</button><button class="danger" id="exportData" type="button">Esporta i miei dati</button></div>
       <p class="tiny">Puoi esportare una copia dei tuoi dati. Se cancelli i dati del browser o cambi telefono, potresti perderli: conserva il file esportato.</p>
+      <div class="reminder-box">
+        <h3>💧 Promemoria acqua</h3>
+        <p class="tiny">Ricevi un avviso mentre My Sleeve è aperta o resta attiva nel browser.</p>
+        <label class="reminder-toggle"><input id="waterReminderEnabled" type="checkbox"> Attiva promemoria acqua</label>
+        <label>Ogni quanto ricordartelo?
+          <select id="waterReminderInterval">
+            <option value="30">Ogni 30 minuti</option>
+            <option value="60" selected>Ogni ora</option>
+            <option value="90">Ogni ora e mezza</option>
+            <option value="120">Ogni 2 ore</option>
+          </select>
+        </label>
+        <div class="reminder-times">
+          <label>Dalle<input id="waterReminderStart" type="time" value="08:00"></label>
+          <label>Alle<input id="waterReminderEnd" type="time" value="20:00"></label>
+        </div>
+        <button class="primary" id="saveReminder" type="button">Salva promemoria</button>
+        <p class="tiny" id="reminderStatus" aria-live="polite">Promemoria disattivato.</p>
+      </div>
       <button class="text-danger" id="resetData" type="button">Cancella tutti i miei dati da questo dispositivo</button>
     </form>
   </dialog>

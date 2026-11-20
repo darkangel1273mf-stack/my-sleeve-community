@@ -14,7 +14,7 @@ function renderEntries(){const el=$("#entries"),items=[...data.entries].sort((a,
 function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 $("#profileForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.currentTarget);data.profile={nickname:f.get("nickname").trim(),surgeryDate:f.get("surgeryDate"),goal:f.get("goal").trim()};persist();show();toast("Il tuo spazio personale è pronto")});
 const fields={
- water:{title:"Registra acqua",html:'<label>Quantità (ml)<input name="amount" type="number" min="1" max="5000" step="1" placeholder="Es. 150" required></label><p class="tiny">Segna la quantità che hai bevuto. Segui sempre l'obiettivo indicato dal tuo team sanitario.</p>'},
+ water:{title:"Registra acqua",html:'<label>Quantità (ml)<input name="amount" type="number" min="1" max="5000" step="1" placeholder="Es. 150" required></label><p class="tiny">Segna la quantità che hai bevuto. Segui sempre l\'obiettivo indicato dal tuo team sanitario.</p>'},
  weight:{title:"Registra peso",html:'<label>Peso (kg)<input name="weight" type="number" min="1" max="500" step="0.1" placeholder="Es. 82,5" required></label>'},
  meal:{title:"Registra pasto",html:'<label>Momento<select name="mealType"><option>Colazione</option><option>Spuntino</option><option>Pranzo</option><option>Merenda</option><option>Cena</option><option>Altro</option></select></label><label>Cosa hai mangiato?<textarea name="description" maxlength="500" placeholder="Scrivi qui..." required></textarea></label>'},
  note:{title:"Scrivi una nota",html:'<label>La tua nota<textarea name="description" maxlength="1000" placeholder="Come ti senti oggi? Appunti, sintomi o pensieri..." required></textarea></label>'}
